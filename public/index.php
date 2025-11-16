@@ -1,18 +1,27 @@
 <?php
 
 require_once __DIR__ . "/../app/controllers/RegisterController.php";
+require_once __DIR__ . "/../app/controllers/LogInController.php";
+require_once __DIR__ . "/../app/controllers/HomeController.php";
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-$controller = new RegisterController();
+$Regcontroller = new RegisterController();
+$Logcontroller = new LogInController();
+$HomeController = new HomeController();
 
-
-if ($uri === "/") {
-    $controller->registerForm();
+if ($uri === "/register") {
+    $Regcontroller->registerForm();
 } elseif ($uri === "/registerProcess") {
-    $controller->registerUser();
+    $Regcontroller->registerUser();
+} elseif ($uri === "/logIn") {
+    $Logcontroller->logInForm();
+} elseif ($uri === "/logInProcess") {
+    $Logcontroller->logInUser();
 } elseif ($uri === "/success") {
-    require_once __DIR__ . "/../app/views/pages/success.php";
+    $Regcontroller->successPage();
+} elseif ($uri === "/") {
+    $HomeController->HomePage();
 } else {
-    echo "404 Not Found - What the Fuck";
+    echo "404 Not Found - Page does not exist";
 }

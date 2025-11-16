@@ -11,6 +11,13 @@ class RegisterController
         require_once __DIR__ . "/../views/pages/register.php";
     }
 
+    public function successPage()
+    {
+        require_once __DIR__ . "/../views/pages/success.php";
+    }
+
+
+
     public function registerUser()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -56,10 +63,14 @@ class RegisterController
 
                 foreach ($errors as $error) {
                     $_SESSION['errors'] = $error;
-                    header("Location: /");
+                    header("Location: /register");
                     exit();
                 }
+            } else {
+                echo "noo";
             }
+
+
 
             $user = new User();
 
@@ -77,6 +88,8 @@ class RegisterController
                 header("Location: /success");
                 exit();
             }
+        } else {
+            echo "no";
         }
     }
 }

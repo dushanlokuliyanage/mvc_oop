@@ -13,10 +13,9 @@
 
         <?php
 
-        if (!empty($_SESSION['error'])) {
-            echo '<div style="color:red;">' . htmlspecialchars($_SESSION['error'], ENT_QUOTES) .  ' </div>';
-            unset($_SESSION['error']);
-            var_dump($_SESSION['error']);
+        if (!empty($_SESSION['errors'])) {
+            echo '<div style="color:red;">' . htmlspecialchars($_SESSION['errors'], ENT_QUOTES) .  ' </div>';
+            unset($_SESSION['errors']);
         } ?>
 
         <label for="firstName">First Name</label>
@@ -44,7 +43,7 @@
         <br>
         <button type="submit">Submit</button>
         <br>
-        <a href="logIn.php">I have Alredy Account, Sign In</a>
+        <a href="/logIn">I have Alredy Account, Sign In</a>
     </form>
 
 </body>
