@@ -24,7 +24,6 @@ class RegisterController
 
             $errors = [];
 
-
             $firstName   = trim($_POST['firstName']);
             $lastName    = trim($_POST['lastName']);
             $email       = trim($_POST['email']);
@@ -61,6 +60,9 @@ class RegisterController
 
             if (!empty($errors)) {
 
+                $data = [$firstName, $lastName, $email, $password, $phoneNumber, $gender];
+                $_SESSION['data'] = $data;
+
                 foreach ($errors as $error) {
                     $_SESSION['errors'] = $error;
                     header("Location: /register");
@@ -86,10 +88,11 @@ class RegisterController
 
             if ($saved) {
                 header("Location: /success");
+                $_SESSION['success'];
                 exit();
             }
         } else {
-            echo "no";
+            echo "No";
         }
     }
 }

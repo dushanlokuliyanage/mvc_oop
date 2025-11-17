@@ -16,30 +16,38 @@
         if (!empty($_SESSION['errors'])) {
             echo '<div style="color:red;">' . htmlspecialchars($_SESSION['errors'], ENT_QUOTES) .  ' </div>';
             unset($_SESSION['errors']);
-        } ?>
+        } else {
+            unset($_SESSION['data']);
+        }
+        // if(isset($_SESSION['success'])){
+
+        // }
+
+        ?>
+
 
         <label for="firstName">First Name</label>
-        <input type="text" name="firstName">
+        <input type="text" name="firstName" value="<?php echo htmlspecialchars($_SESSION['data'][0] ?? '', ENT_QUOTES); ?>">
         <br>
         <label for="lastName">Last Name</label>
-        <input type="text" name="lastName">
+        <input type="text" name="lastName" value="<?php echo htmlspecialchars($_SESSION['data'][1] ?? '', ENT_QUOTES); ?>">
         <br>
         <label for="email">Email</label>
-        <input type="email" name="email">
+        <input type="email" name="email" value="<?php echo htmlspecialchars($_SESSION['data'][2] ?? '', ENT_QUOTES); ?>">
         <br>
         <label for="password">Password</label>
-        <input type="password" name="password">
+        <input type="password" name="password" value="<?php echo htmlspecialchars($_SESSION['data'][3] ?? '', ENT_QUOTES); ?>">
         <br>
         <label for="phoneNumber">Phone Number</label>
-        <input type="text" name="phoneNumber">
+        <input type="text" name="phoneNumber" value="<?php echo htmlspecialchars($_SESSION['data'][4] ?? '', ENT_QUOTES); ?>">
         <br>
-        <select name="gender">
+        <select name="gender" value="<?php echo htmlspecialchars($_SESSION['data'][5] ?? '', ENT_QUOTES); ?>">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
         <br>
         <label for="address">Address</label>
-        <input type="text" name="address">
+        <input type="text" name="address" value="<?php echo htmlspecialchars($_SESSION['data'][6] ?? '', ENT_QUOTES); ?>">
         <br>
         <button type="submit">Submit</button>
         <br>
