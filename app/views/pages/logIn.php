@@ -23,10 +23,10 @@
         ?>
 
         <label for="email">Email</label>
-        <input type="email" name="email">
+        <input type="email" name="email" value="<?php echo htmlspecialchars($_SESSION['Logdata'][0] ?? '', ENT_QUOTES) ?>">
 
         <label for="password">Pssword</label>
-        <input type="password" name="password">
+        <input type="password" name="password" value="<?php echo htmlspecialchars($_SESSION['Logdata'][1] ?? '', ENT_QUOTES) ?>">
 
         <button type="submit">Log In</button>
         <a href="/register">I don't have Alredy Account, Register</a>

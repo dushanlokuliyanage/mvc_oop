@@ -34,6 +34,9 @@ class LogInController
 
             if (!empty($errors)) {
 
+                $data = [$email, $password];
+                $_SESSION['Logdata'] = $data;
+
                 foreach ($errors as $error) {
                     $_SESSION['errors'] = $error;
                     header("Location: /logIn");
@@ -51,7 +54,9 @@ class LogInController
             ]);
 
             if ($saved) {
+              
                 header("Location: /");
+                  $_SESSION['home'];
                 exit();
             }
         }

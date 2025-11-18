@@ -1,3 +1,6 @@
+<?php unset($_SESSION['Logdata']); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +14,8 @@
 </head>
 
 <body>
-    <?php include __DIR__ . '/../layouts/header.php'; ?>
-<!-- 
+    <?php include __DIR__ . '/../layouts/header.php';?>
+    <!-- 
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">

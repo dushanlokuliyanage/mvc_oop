@@ -12,22 +12,30 @@ class User
         $this->pdo = $db->setUpConn();
     }
 
-    public function create($d)
+    public function create($data)
     {
         $sql = "INSERT INTO user (firstName, lastName, email, password,phoneNumber,gender,address) VALUES (?, ?, ?, ?,?,?,?)";
         $stmt = $this->pdo->prepare($sql);
 
         return $stmt->execute([
-            $d['firstName'],
-            $d['lastName'],
-            $d['email'],
-            password_hash($d['password'], PASSWORD_BCRYPT),
-            $d['phoneNumber'],
-            $d['gender'],
-            $d['address'],
+            $data['firstName'],
+            $data['lastName'],
+            $data['email'],
+            password_hash($data['password'], PASSWORD_BCRYPT),
+            $data['phoneNumber'],
+            $data['gender'],
+            $data['address'],
 
 
         ]);
+    }
+
+    // GET USER BY EMAIL (important for login + registration session)
+    public function getUserByEmail($email)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM user WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function logIn($data)
