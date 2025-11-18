@@ -39,22 +39,28 @@
                 </a>
 
 
-            <?php      } else {
+            <?php  } else {
 
 
                 $firstLet =   $_SESSION['user']['firstName'];
                 $lastLet = $_SESSION['user']['lastName'];
-                $test =  strtoupper($firstLet[0] . $lastLet[0]); ?>
+                $name =  strtoupper($firstLet[0] . $lastLet[0]); ?>
 
-                <a href="/userProfile"><?php echo $test; ?> </a>
+                <h5 class="me-2"> <?php echo $name ?></h5>
+                <a href="/userProfile" class="me-2">Profile</a>
+
+                <a href="/logout" class="me-2">Logout</a>
+                <form action="/delectAccount" method="POST" onsubmit="return confirm('Are you sure you want to delete your account?');">
+                    <button type="submit" class="me-2 btn btn-outline-dark">Delect Account</button>
+                </form>
 
             <?php
             }
 
             ?>
 
-
         </div>
+
     </div>
 
 </nav>

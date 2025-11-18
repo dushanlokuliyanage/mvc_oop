@@ -72,8 +72,6 @@ class RegisterController
                 echo "noo";
             }
 
-
-
             $user = new User();
 
             $saved = $user->create([
@@ -86,9 +84,7 @@ class RegisterController
                 "address"     => $address
             ]);
 
-                $newUser = $user->getUserByEmail($email);
-
-
+            $newUser = $user->getUserByEmail($email);
 
             $_SESSION['user'] =  [
 

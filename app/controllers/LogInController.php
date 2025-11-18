@@ -53,6 +53,19 @@ class LogInController
 
             ]);
 
+      $newUser = $user->getUserByEmail($email);
+
+            $_SESSION['user'] =  [
+
+                'firstName' => $newUser['firstName'],
+                'lastName' => $newUser['lastName'],
+                'email' => $newUser['email'],
+                'password' => $newUser['password'],
+                'phoneNumber' => $newUser['phoneNumber'],
+                'gender' => $newUser['gender'],
+                'address' => $newUser['address']
+
+            ];
             if ($saved) {
               
                 header("Location: /");

@@ -4,7 +4,6 @@ class UserProfileController
 {
     public function userProfile()
     {
- 
 
         if (!isset($_SESSION['user'])) {
             header("Location: /logIn");
