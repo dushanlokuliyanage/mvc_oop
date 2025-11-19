@@ -56,7 +56,7 @@ class LogInController
       $newUser = $user->getUserByEmail($email);
 
             $_SESSION['user'] =  [
-
+ 'id' => $newUser['id'],
                 'firstName' => $newUser['firstName'],
                 'lastName' => $newUser['lastName'],
                 'email' => $newUser['email'],
