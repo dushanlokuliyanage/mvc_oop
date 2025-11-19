@@ -47,7 +47,7 @@
                 $name =  strtoupper($firstLet[0] . $lastLet[0]); ?>
 
                 <h5 class="me-2"> <?php echo $name ?></h5>
-                <a href="/userProfile" class="me-2">Profile</a>
+                <a href="/Profile" class="me-2">Profile</a>
 
                 <a href="/logout" class="me-2">Logout</a>
                 <form action="/delectAccount" method="POST" onsubmit="return confirm('Are you sure you want to delete your account?');">

@@ -12,9 +12,7 @@ if (isset($_SESSION['user'])) {
 
     <body>
 
-    <h3 style="color:red"> Now — your are Logout.</h3>
-
-    <p>Redirecting to the homepage in 2 seconds...</p>
+    <h3 style="color:red">Logout Successfully !.</h3>
 
     <script>setTimeout(function(){window.location.href="/";},2000);</script>
 

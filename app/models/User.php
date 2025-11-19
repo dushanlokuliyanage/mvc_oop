@@ -40,11 +40,11 @@ class User
     public function logIn($data)
     {
         // Fetch user by email
-        $sql = "SELECT * FROM `user` WHERE `email` = :email , `id` = :id LIMIT 1";
+        $sql = "SELECT * FROM `user` WHERE `email` = :email LIMIT 1";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             ':email' => $data['email'],
-            ':id' => $data['id']
+
         ]);
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -66,8 +66,29 @@ class User
 
         $stmt->bindParam(':id', $data['id']);
         return $stmt->execute();
+    }
 
-        session_unset();
-        session_destroy();
+    public function update($data)
+    {
+        $sql = "UPDATE `user` SET `firstName` = ?, `lastName` = ?, `email` = ?, `phoneNumber` = ?, `gender` = ?, `address` = ? WHERE `id` = ? ";
+        $stmt = $this->pdo->prepare($sql);
+
+        return $stmt->execute([
+            $data['firstName'],
+            $data['lastName'],
+            $data['email'],
+            $data['phoneNumber'],
+            $data['gender'],
+            $data['address'],
+            $data['id'],
+            
+        ]);
+
+
+
+
+
+
+        
     }
 }

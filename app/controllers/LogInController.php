@@ -15,10 +15,13 @@ class LogInController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $errors = [];
-
             $email       = trim($_POST['email']);
             $password    = trim($_POST['password']);
+
+            $user = new User();
+            $newUser = $user->getUserByEmail($email);
+            $errors = [];
+
 
             // VALIDATION
 
@@ -26,6 +29,8 @@ class LogInController
                 $errors[] = "Email is required";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $errors[] = "Invalid Email";
+            } elseif (!$newUser) {
+                $errors[] = "Email not found. Please register first.";
             }
 
             if (empty($password)) {
@@ -44,8 +49,6 @@ class LogInController
                 }
             }
 
-            $user = new User();
-
             $saved = $user->logIn([
 
                 "email"       => $email,
@@ -53,10 +56,8 @@ class LogInController
 
             ]);
 
-      $newUser = $user->getUserByEmail($email);
-
             $_SESSION['user'] =  [
- 'id' => $newUser['id'],
+                'id' => $newUser['id'],
                 'firstName' => $newUser['firstName'],
                 'lastName' => $newUser['lastName'],
                 'email' => $newUser['email'],
@@ -67,9 +68,9 @@ class LogInController
 
             ];
             if ($saved) {
-              
+
                 header("Location: /");
-                  $_SESSION['home'];
+                $_SESSION['home'];
                 exit();
             }
         }

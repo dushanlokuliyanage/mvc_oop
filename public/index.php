@@ -6,6 +6,7 @@ require_once __DIR__ . "/../app/controllers/HomeController.php";
 require_once __DIR__ . "/../app/controllers/UserProfileController.php";
 require_once __DIR__ . "/../app/controllers/LogoutController.php";
 require_once __DIR__ . "/../app/controllers/DeleteAccountController.php";
+require_once __DIR__ . "/../app/controllers/UpdateProfileController.php";
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -15,6 +16,7 @@ $HomeController = new HomeController();
 $UserController = new UserProfileController();
 $logoutController = new LogoutController();
 $deleteController = new DeleteAccountController();
+$updateController = new UpdateProfileController();
 
 
 if ($uri === "/register") {
@@ -29,14 +31,17 @@ if ($uri === "/register") {
     $Regcontroller->successPage();
 } elseif ($uri === "/") {
     $HomeController->HomePage();
-} elseif ($uri === "/userProfile") {
+} elseif ($uri === "/Profile") {
     $UserController->userProfile();
 } elseif ($uri === "/logout") {
     $logoutController->userLogout();
-} elseif ($uri === "/deleteAcc") {
-    $deleteController->deletePage();
-} elseif ($uri === "/delectAccount") {
+}  elseif ($uri === "/delectAccount") {
     $deleteController->deleteUser();
-} else {
+} elseif($uri === "/profileUpdate"){
+$updateController->updateProfile();
+}
+
+
+else {
     echo "404 Not Found - Page does not exist";
 }

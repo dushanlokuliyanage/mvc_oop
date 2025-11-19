@@ -22,6 +22,7 @@ class RegisterController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+            $user = new User();
             $errors = [];
 
             $firstName   = trim($_POST['firstName']);
@@ -40,6 +41,8 @@ class RegisterController
                 $errors[] = "Email is required";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $errors[] = "Invalid Email";
+            } elseif ($user->getUserByEmail($email)) {
+                $errors[] = "This email is already taken.";
             }
 
             if (empty($password)) {
@@ -72,7 +75,7 @@ class RegisterController
                 echo "noo";
             }
 
-            $user = new User();
+
 
             $saved = $user->create([
                 "firstName"   => $firstName,

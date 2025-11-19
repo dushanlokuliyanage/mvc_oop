@@ -1,8 +1,8 @@
 <?php 
 
-if(!isset($_SESSION['user'])){
+if(isset($_POST['saveBtn'])){
 
-    echo
+echo 
     '<!doctype html>
     <html>
     <head>
@@ -14,13 +14,12 @@ if(!isset($_SESSION['user'])){
 
     <body>
 
-    <h2 style="color:green"> Your account has been deleted successfully.Thank you for Used Us !</h2>
+    <h2 style="color:green"> Profile Updata Successfully !</h2>
 
-    <script>setTimeout(function(){window.location.href="/logIn?deleted122";},2000);</script>
+    <script>setTimeout(function(){window.location.href="/Profile?updated=15185";},2000);</script>
 
     </body>
     </html>';
-
-
-
 }
+
+

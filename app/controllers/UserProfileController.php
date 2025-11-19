@@ -9,6 +9,6 @@ class UserProfileController
             header("Location: /logIn");
             exit;
         }
-        require_once __DIR__ . "/../views/pages/userProfile.php";
+        require_once __DIR__ . "/../views/pages/Profile.php";
     }
 }
