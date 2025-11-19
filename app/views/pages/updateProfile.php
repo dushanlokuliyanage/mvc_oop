@@ -1,6 +1,6 @@
 <?php 
 
-if(isset($_POST['saveBtn'])){
+if(isset($_SESSION['update'])){
 
 echo 
     '<!doctype html>
@@ -20,6 +20,8 @@ echo
 
     </body>
     </html>';
+}else{
+    echo "Hello";
 }
 
 

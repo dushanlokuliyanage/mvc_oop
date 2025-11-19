@@ -3,6 +3,12 @@
 class UpdateProfileController
 {
 
+
+    public function updatedPage()
+    {
+        require_once __DIR__ . "/../views/pages/updateProfile.php";
+    }
+
     public function updateProfile()
     {
 
@@ -29,15 +35,20 @@ class UpdateProfileController
 
         ]);
 
-        $_SESSION['user']['firstName'] = $firstName;
-        $_SESSION['user']['lastName'] = $lastName;
-        $_SESSION['user']['email'] = $email;
-        $_SESSION['user']['phoneNumber'] = $phoneNumber;
-        $_SESSION['user']['address'] = $address;
-        $_SESSION['user']['gender'] = $gender;
-
+        $update = [
+            $_SESSION['user']['firstName'] = $firstName,
+            $_SESSION['user']['lastName'] = $lastName,
+            $_SESSION['user']['email'] = $email,
+            $_SESSION['user']['phoneNumber'] = $phoneNumber,
+            $_SESSION['user']['address'] = $address,
+            $_SESSION['user']['gender'] = $gender,
+        ];
         if ($saved) {
-            require_once __DIR__ . "/../views/pages/updateProfile.php";
+            header("Location: /updated");
+            $_SESSION['update'] = $update;
+            var_dump($_SESSION['update']);
+
+            exit();
         }
     }
 }

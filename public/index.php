@@ -39,6 +39,8 @@ if ($uri === "/register") {
     $deleteController->deleteUser();
 } elseif($uri === "/profileUpdate"){
 $updateController->updateProfile();
+}elseif($uri === "/updated"){
+$updateController->updatedPage();
 }
 
 

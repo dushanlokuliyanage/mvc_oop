@@ -104,7 +104,7 @@ class RegisterController
 
             if ($saved) {
                 header("Location: /success");
-                $_SESSION['success'];
+             //  $_SESSION['success'];
                 exit();
             }
         } else {
