@@ -30,6 +30,7 @@
 
         <button type="submit">Log In</button>
         <a href="/register">I don't have Alredy Account, Register</a>
+        <a href="/forgotPassword">Forgot Password</a>
     </form>
 
 </body>

@@ -35,13 +35,22 @@ if ($uri === "/register") {
     $UserController->userProfile();
 } elseif ($uri === "/logout") {
     $logoutController->userLogout();
-}  elseif ($uri === "/delectAccount") {
+} elseif ($uri === "/delectAccount") {
     $deleteController->deleteUser();
-} elseif($uri === "/profileUpdate"){
-$updateController->updateProfile();
-}elseif($uri === "/updated"){
-$updateController->updatedPage();
+} elseif ($uri === "/profileUpdate") {
+    $updateController->updateProfile();
+} elseif ($uri === "/updated") {
+    $updateController->updatedPage();
+} elseif ($uri === "/forgotPassword") {
+    $Logcontroller->forgotForm();
+} elseif ($uri === "/forgotProcess") {
+    $Logcontroller->forgotPassword();
+} elseif($uri === "/newPassword"){
+ $Logcontroller->newPasswordForm();
+}elseif($uri === "/newPasswordProcess"){
+    $Logcontroller->newPassword();
 }
+
 
 
 else {

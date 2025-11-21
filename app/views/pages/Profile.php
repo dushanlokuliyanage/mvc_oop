@@ -41,6 +41,8 @@ if (!isset($_SESSION['user'])) {
     <button id="updateBtn" name="updateBtn" type="button">update</button>
     <button id="saveBtn" style="display:none;" name="saveBtn" type="submit">save</button>
     </form>
+<br>
+    <a href="/">Go Home</a>
 
 <script src="/assets/js/script.js"></script>
 

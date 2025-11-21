@@ -81,14 +81,50 @@ class User
             $data['gender'],
             $data['address'],
             $data['id'],
-            
+
+        ]);
+    }
+
+
+    public function forgot($data)
+    {
+
+        $sql = "SELECT * FROM `user` WHERE `email` = :email";
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->execute([
+            ':email' => $data['email']
         ]);
 
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        if ($user && $user['email'] == $data['email']) {
+            $min = 1000;
+            $max = 9999;
+            $code =  rand($min, $max);
+            // echo $code;
 
+            $sql = "UPDATE `user` SET `veryfyKey` = :fcode WHERE  `email` = :email";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':email' => $data['email'],
+                ':fcode' => $code
+            ]);
 
+            $_SESSION['fcode'] = $code;
+            $_SESSION['email'] = $data['email'];
 
+            return true;
+        }
 
-        
+        $sql = "UPDATE `user` SET `password` = :password WHERE `email`= :email";
+        $stmt = $this->pdo->prepare($sql);
+
+        password_hash($data['password'], PASSWORD_BCRYPT);
+
+       return $stmt->execute([
+            ':email' => $data['email'],
+            ':password' => $data['newPassword']
+        ]);
     }
 }
